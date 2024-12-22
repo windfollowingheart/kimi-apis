@@ -1,6 +1,10 @@
-<div style="width:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; font-size:30px; font-weight:700">
-<div>Kimi Api</div>
-<div style="font-size: 16px; font-weight:normal">The api of kimi llm model</div>
+
+
+<div align="center">
+
+# Kimi Apis
+*the api of kimi llm model*
+
 </div>
 
 ## How to use
