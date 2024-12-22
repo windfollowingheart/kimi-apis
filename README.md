@@ -32,3 +32,12 @@ kimiApi.kimiInitChatHistory()
 <div align="center">
 <img src="asserts/1.gif" width="100%" />
 </div>
+
+
+## Projects use Kimi Apis
+[Zotero Paper Agent](https://github.com/windfollowingheart/zotero-paper-agent)
+
+<div align="center">
+    <img src="asserts/zotero-paper-agent.png"/>
+</div>
+
