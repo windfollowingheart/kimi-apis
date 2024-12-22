@@ -54,6 +54,7 @@ function createUploadFileComponent(
             return null
         }
     }
+    fileName = Array.from(new Set(fileName.split("."))).join(".")
     // 整个上传文件组件
     const uploadFileComp = doc.createElement("div")
     uploadFileComp.classList.add("kimi_upload_file_comp_div")
@@ -111,7 +112,8 @@ function createUploadFileComponent(
     const imgBackGroundElement = doc.createElement("img")
     imgBackGroundElement.classList.add("kimi_upload_file_comp_img_background_img")
     imgBackGroundElement.style.height = "90%"
-    imgBackGroundElement.style.width = "auto"
+    imgBackGroundElement.style.width = "auto",
+    imgBackGroundElement.style.maxWidth = "95%",
     imgBackGroundElement.style.objectFit = "cover"
     imgBackGroundElement.style.position = "absolute"
     imgBackGroundElement.style.zIndex = "1"
@@ -225,6 +227,17 @@ function createUploadFileComponent(
                 previewUrl: previewUrlDiv.textContent
             })
         })
+    }
+
+    if(!isUploading){
+        imgBackGroundElement.style.height = "100%"
+        imgBackGroundElement.style.width = "100%"
+        imgBackGroundElement.style.objectFit = "cover"
+        imgBackGroundElement.style.objectPosition = "center"
+        imgBackGroundElement.style.borderRadius = "5px"
+        imgBackGroundElement.style.overflow = "hidden"
+        imgBackGroundElement.style.border = "1px solid #ccc"
+        imgBackGroundElement.style.boxShadow = "0 0 1px 0 rgba(0, 0, 0, 0.3)"
     }
 
 

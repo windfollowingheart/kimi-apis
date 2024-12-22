@@ -4,7 +4,7 @@
 
 import { icons } from "../../icons/icons"
 import { markdown } from "../../markdown"
-import { refineResponseText, removeOnlineCite, removeSVGElements, replaceMathSymbols } from "../../utils"
+import { decodeBase64, refineResponseText, removeOnlineCite, removeSVGElements, replaceMathSymbols } from "../../utils"
 import { createUploadFileComponent } from "./fileUi"
 
 /**
@@ -605,7 +605,8 @@ function createChatHistoryDetailUI({
                                 isUploading: false,
                                 isShowCancelX: false,
                                 fileName: file_info.name,
-                                fileType: file_info.content_type.split("/")[1],
+                                // fileType: file_info.content_type.split("/")[1],
+                                fileType: "",
                                 fileSize: file_info.size,
                                 doc: doc,
                                 icon: file_info.presigned_url, //图片直接显示图标
@@ -620,7 +621,8 @@ function createChatHistoryDetailUI({
                                 isUploading: false,
                                 isShowCancelX: false,
                                 fileName: file_info.name,
-                                fileType: file_info.content_type.split("/")[1],
+                                // fileType: file_info.content_type.split("/")[1],
+                                fileType: "",
                                 fileSize: file_info.size,
                                 doc: doc,
                                 icon: icons.pdfIcon,
@@ -655,15 +657,17 @@ function createChatHistoryDetailUI({
                 }
                 console.log("取消svg", content)
                 agentMessageOriginalDiv.textContent = replaceMathSymbols(content)
-                console.log("取消svg1", content.match(/```(.*?)```/gs))
-                agentMessageCodeOriginalDiv.textContent = content.match(/```(.*?)```/gs) || ""
+                // agentMessageCodeOriginalDiv = agentChatDiv.querySelector(".kimi-markdown-code-original-content") as HTMLDivElement
+                // console.log("取消svg1", content.match(/```(.*?)```/gms))
+                // agentMessageCodeOriginalDiv.textContent = content.match(/```(.*?)```/gms) || ""
+                const agentMessageCodeOriginalDiv =  agentChatDiv.querySelector(".kimi-markdown-code-original-content") as HTMLDivElement
                 const agentMessageCodeCopyButtonDiv = agentMessageMarkdownDisplayDiv.querySelector(".kimi-markdown-code-copy-button") as HTMLDivElement
                 // console.log("agentMessageCodeCopyButtonDiv!!!!!!!!!!!!!!!!!!!", agentMessageCodeCopyButtonDiv)
                 if(agentMessageCodeCopyButtonDiv){
                     agentMessageCodeCopyButtonDiv.classList.remove("disabled")
                     agentMessageCodeCopyButtonDiv.addEventListener("click", () => {
                     try{
-                        const content = agentMessageCodeOriginalDiv.innerHTML
+                        const content = decodeBase64(agentMessageCodeOriginalDiv.textContent as string) 
                         navigator.clipboard.writeText(refineResponseText(content))
                         copyMessageCallBackFunc?.({isok: true, content: content})
                     }catch(e:any){
