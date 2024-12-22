@@ -1,0 +1,80 @@
+
+
+.kimi-note-button-container-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    height: 15%;
+    background-color: #EDEDED;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: transform 0.5s ease, width 0.5s ease;
+    transform: translateX(0);
+    width: 0px;
+    font-size: 16px;
+    z-index: 5 !important;
+    border-radius: 0 5px 5px 0;
+    
+}
+
+.kimi-note-button-container-div-show {
+    width: 70px;
+    transform: translateX(0);
+    box-shadow: 3px 0px 5px 0 rgba(0, 0, 0, 0.212);
+    z-index: 5 !important;
+    
+}
+
+.kimi-create-note-confirm-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    border:none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 5px 0px;
+}
+
+.kimi-create-note-cancel-button {
+    background-color: #d46f48;
+    color: white;
+    border-radius: 5px;
+    border:none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 5px 0px;
+}
+
+.add-this-message-box-to-notes {
+    position: relative;
+}
+
+.add-this-message-box-to-notes::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* 半透明黑色背景 */
+    z-index: 10;
+}
+
+.add-this-message-box-to-notes-border {
+    /* border-top: 2px dashed #8a8a8a; */
+    /* 设置上边线为2px的黑色虚线 */
+    border-bottom: 2px dashed #8a8a8a;
+    /* 设置下边线为2px的黑色虚线 */
+    /* border: 1px solid #707070; */
+    /* background-color: #b4b4b4; */
+}
+
+
+

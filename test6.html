@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="md.css"> -->
+    <!-- <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="editorHistoryName.css">
+    <link rel="stylesheet" href="deleteChatHistory.css">
+    <link rel="stylesheet" href="md.css">
+    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="note.css">
+    <link rel="stylesheet" href="createNoteDialog.css"> -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="md.css">
+</head>
+<script src="kimi_apis.min.js"></script>
+<script src="test2.js"></script>
+<body>
+    <div id="chat_container" style="width: 100%; height: 800px;
+     display: flex; flex-direction: column; align-items: center;">
+        <div id="create_new_chat_btn">创建新的chat</div><br>
+        <div>
+            <input type="text" id="input" placeholder="请输入问题" 
+            value="你好" 
+            style="width: 500px;">
+            <button id="query">发送</button>
+        </div>
+        <div class="chatFrame" style="width:80%; background-color: #ca4444;
+        height:900px; display:flex;flex-direction:column"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const css = document.createElement("style")
+           
+
+            const input = document.getElementById("input")
+            const query_btn = document.getElementById("query")
+            const chatFrameDiv = document.querySelector(".chatFrame")
+            const create_new_chat_btn = document.getElementById("create_new_chat_btn")
+            create_new_chat_btn.addEventListener("click", () => {
+                console.log(b)
+                console.log(kimiApi.fileHashMap)
+            })
+            let a = 0
+            let b = 0
+
+            
+            const kimiApi = new KimiApi({
+                chatId: "ctf9c1vpfah9s7qpbhog1",
+                
+                accessToken: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MTg2ODM2MCwiaWF0IjoxNzM0MDkyMzYwLCJqdGkiOiJjdGUyY2kzZjRrbWxrYW9sY2lpZyIsInR5cCI6ImFjY2VzcyIsImFwcF9pZCI6ImtpbWkiLCJzdWIiOiJjbW11YWkwM3IwN2FsajNwNzRmMCIsInNwYWNlX2lkIjoiY21tdWFpMDNyMDdhbGozcDc0ZWciLCJhYnN0cmFjdF91c2VyX2lkIjoiY21tdWFpMDNyMDdhbGozcDc0ZjAiLCJyb2xlcyI6WyJmX212aXAiLCJ2aWRlb19nZW5fYWNjZXNzIl19.TiNzVj2bV-bpyGqr6VPfEgFYxpSF_W_aewrLgZIud2IpZXsLjJkWZqQ32WtzA3-6dQIxbUdEunsiF5d44XL9Aw",
+                refreshToken: "1234567890",
+                maxRetry: 3,
+                isObserveResize: true,
+                isRemoveSVGElements: false,
+                isEnableFileHashMapSearch: true,
+                isEnablePreview: false,
+                uploadFileUint8ArrayTimeout: 30000,
+                readFileFunc: (file) => {
+                    return new Uint8Array(file)
+                },
+                createNewChatCallBackFuncSetter: (func) => {
+                    alert(func())
+                    a = func()
+                    console.log("a:", a)
+                },
+                createNewChatCallBackFunc: (args) => {
+                    b = args.chatId
+                    console.log("b:", b)
+                },
+                createNoteCallBackFunc: (args) => {
+                    console.log("args:", args.noteText)
+                },
+                previewCallBackFunc: (args) => {
+                    navigator.clipboard.writeText(args.previewUrl)
+                }
+            })
+            const cssConfigs = {
+                "kimi-main-container-div": {
+                    "height": "700px",
+                  "background-color": "#ca4444",
+                },
+                "user-input-text-area": {
+                  "background-color": "#ffffff",
+                  "border-radius": "10px",
+                  "height": "25px",
+                  "font-size": "17px",
+                }
+              }
+            kimiApi.kimiCreateMainUi({doc: document, isRegisterListener: true, isAddCss: true,
+            cssConfigs:cssConfigs, isObserveResize: true})
+            
+            const kimiMainContainerDiv = kimiApi.kimiMainContainerDiv
+            chatFrameDiv.appendChild(kimiApi.kimiMainContainerDiv)
+            var textarea = kimiMainContainerDiv.querySelector('.user-input-file-input');
+            console.log(textarea)
+            textarea.addEventListener("change", (e) => {
+                console.log("click")
+            })
+
+            kimiApi.kimiCheckRefreshToken().then(res => {
+                console.log("aa", res)
+              })
+            kimiApi.kimiInitChatHistory()
+
+            
+
+            
+        })
+
+        
+    </script>
+    
+</body>
+
+<style>
+
+</style>
+</html>

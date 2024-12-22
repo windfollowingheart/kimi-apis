@@ -1,0 +1,32 @@
+{
+  "name": "kimi-apis",
+  "version": "1.0.2",
+  "description": "",
+  "main": "dist/node/index.js",
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "crypto-js": "^4.2.0",
+    "highlight.js": "^11.10.0",
+    "kimi-apis": "file:",
+    "markdown-it": "^14.1.0",
+    "markdown-it-mathjax3": "^4.3.2",
+    "qrcode-svg": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.10.2",
+    "@types/qrcode-svg": "^1.1.5"
+  }
+}
